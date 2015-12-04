@@ -13,7 +13,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-#include "libft.h"
+#include <libft.h>
 
 void	ft_print_words_tables(char **tab);
 
