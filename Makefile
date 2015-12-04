@@ -23,12 +23,17 @@ LDIR =		./libs/
 LIBS =		-lft
 
 IDIR =		./incs/
-INCS =		libft.h
+INCS =		libft.h		\
+			main.h
 
 SDIR =		./srcs/
 SRCS =		read_tetr.c
 
+ODIR =		./objs/
 OBJS =		$(SRCS:.c=.o)
+OBCC =		$(addprefix $(ODIR),$(OBJS))
+
+NORM =		$(addprefix $(SDIR),$(SRCS)) $(addprefix $(IDIR),$(INCS))
 
 FLAG =		-Wall -Wextra -Werror -I$(IDIR)
 
@@ -36,12 +41,13 @@ all: $(NAME)
 
 $(NAME): header $(OBJS)
 	@echo "  ${BLU}+Compilation:${STD} $@"
-	@gcc $(EXEC) $(OBJS) -L$(LDIR) $(LIBS) -o $(NAME)
+	@gcc $(EXEC) $(OBCC) -L$(LDIR) $(LIBS) -o $(NAME)
 	@echo "  ${YEL}Compilation terminee !${STD}"
 
 %.o: $(SDIR)%.c
-	@echo " ${GRE}+Compilation :${STD} $^"
+	@echo "  ${GRE}+Compilation :${STD} $^"
 	@gcc $^ $(FLAG) -c
+	@mv $@ $(ODIR)$@
 
 header:
 	@clear
@@ -54,14 +60,14 @@ header:
 norme: header
 	@echo "${GRE}  Verification de la norme${STD}\n"
 	@norminette $(SRCS) libft.h
-	@echo "${RED}  \nTotal errors :${STD}" $(shell norminette $(SRCS) $(INCS) | grep -v "Norme" | wc -l)
+	@echo "${RED}  \nTotal errors :${STD}" $(shell norminette $(NORM) | grep -v "Norme" | wc -l)
 
 clean: header
-	@echo " ${RED}-Nettoyage des fichiers objet...${STD}"
-	@rm -f $(OBJS)
+	@echo "  ${RED}-Nettoyage des fichiers objet...${STD}"
+	@rm -f $(OBCC)
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo " ${RED}-Nettoyage de l'exécutable...${STD}"
+	@echo "  ${RED}-Nettoyage de l'exécutable...${STD}"
 
 re: fclean all
