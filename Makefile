@@ -33,7 +33,7 @@ ODIR =		./objs/
 OBJS =		$(SRCS:.c=.o)
 OBCC =		$(addprefix $(ODIR),$(OBJS))
 
-NORM =		$(addprefix $(SDIR),$(SRCS)) $(addprefix $(IDIR),$(INCS))
+NORM =		$(addprefix $(SDIR),$(SRCS)) $(addprefix $(IDIR),$(INCS)) $(EXEC)
 
 FLAG =		-Wall -Wextra -Werror -I$(IDIR)
 
