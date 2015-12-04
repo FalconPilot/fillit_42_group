@@ -43,7 +43,6 @@ $(NAME): header $(OBJS)
 %.o: $(SDIR)%.c
 	@echo " ${GRE}+Compilation :${STD} $^"
 	@gcc $^ $(FLAG) -c
-	@mv $@ $(ODIR)$@
 
 header:
 	@clear
