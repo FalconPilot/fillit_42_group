@@ -1,2 +1,3 @@
-# fillit_42_group
-Repository for the group project fillit
+# 42 project - Fillit
+Personal repository for my team working on Fillit
+rpallies / alallema
