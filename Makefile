@@ -28,7 +28,6 @@ INCS =		libft.h
 SDIR =		./srcs/
 SRCS =		read_tetr.c
 
-ODIR =		./objs/
 OBJS =		$(SRCS:.c=.o)
 
 FLAG =		-Wall -Wextra -Werror -I$(IDIR)
