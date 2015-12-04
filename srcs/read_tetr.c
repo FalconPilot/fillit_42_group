@@ -43,16 +43,3 @@ void	ft_create_tab(char *av)
 		ft_check_tab(tab);
 	close(fd);
 }
-
-int main(int ac, char **av)
-{
-	if (ac != 2)
-	{
-		ft_putstr("error\n");
-	}
-	if (ac == 2)
-	{
-		ft_create_tab(av[1]);
-	}
-	return (0);
-}
