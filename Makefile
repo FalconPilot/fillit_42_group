@@ -18,25 +18,32 @@ STD =		\033[39m
 
 NAME =		fillit
 EXEC =		main.c
-LIBR =		libft.a
+
+LDIR =		./libs/
+LIBS =		-lft
+
+IDIR =		./incs/
 INCS =		libft.h
-FLAG =		-Wall -Wextra -Werror -I./incs/
 
 SDIR =		./srcs/
 SRCS =		read_tetr.c
 
-OBJS =		$(SRC:.c=.o)
+ODIR =		./objs/
+OBJS =		$(SRCS:.c=.o)
 
-$(NAME): header $(EXEC)
-	@echo " ${YEL}Compilation terminee !${STD}"
+FLAG =		-Wall -Wextra -Werror -I$(IDIR)
 
-$(EXEC): $(OBJS)
+all: $(NAME)
+
+$(NAME): header $(OBJS)
 	@echo "  ${BLU}+Compilation:${STD} $@"
-	@gcc $@ $(OBJS) -o $(NAME)
+	@gcc $(EXEC) $(OBJS) -L$(LDIR) $(LIBS) -o $(NAME)
+	@echo "  ${YEL}Compilation terminee !${STD}"
 
 %.o: $(SDIR)%.c
 	@echo " ${GRE}+Compilation :${STD} $^"
 	@gcc $^ $(FLAG) -c
+	@mv $@ $(ODIR)$@
 
 header:
 	@clear
@@ -45,8 +52,6 @@ header:
 	@echo "  |  Projet Fillit  |"
 	@echo "  ==================="
 	@echo "${STD}"
-
-all: $(NAME)
 
 norme: header
 	@echo "${GRE}  Verification de la norme${STD}\n"
