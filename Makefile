@@ -25,17 +25,19 @@ LIBS =		-lft
 IDIR =		./incs/
 INCS =		libft.h					\
 			main.h
+INCC =		$(addprefix $(IDIR),$(INCS))
 
 SDIR =		./srcs/
 SRCS =		read_tetr.c				\
 			ft_create_elem.c		\
 			ft_lst_pushback.c		\
+SRCC =		$(addprefix $(SDIR),$(SRCS))
 
 ODIR =		./objs/
 OBJS =		$(SRCS:.c=.o)
 OBCC =		$(addprefix $(ODIR),$(OBJS))
 
-NORM =		$(addprefix $(SDIR),$(SRCS)) $(addprefix $(IDIR),$(INCS)) $(EXEC)
+NORM =		$(SRCC) $(INCC) $(EXEC)
 
 FLAG =		-Wall -Wextra -Werror -I$(IDIR)
 
