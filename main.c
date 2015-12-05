@@ -6,11 +6,11 @@
 /*   By: alallema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/05 15:50:20 by alallema          #+#    #+#             */
-/*   Updated: 2015/12/05 15:51:04 by alallema         ###   ########.fr       */
+/*   Updated: 2015/12/05 16:49:28 by alallema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <libft.h>
 #include "main.h"
 
 int		main(int ac, char *av)
