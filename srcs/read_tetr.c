@@ -6,7 +6,7 @@
 /*   By: alallema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 17:46:52 by alallema          #+#    #+#             */
-/*   Updated: 2015/12/05 14:34:53 by alallema         ###   ########.fr       */
+/*   Updated: 2015/12/05 16:41:14 by alallema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ t_tetr	*ft_check_tab(char *s, int n)
 	i = 0;
 	j = 0;
 	k = 0;
+	ft_putstr(s);
 	tab = (char **)malloc(sizeof(char*) * 5);
 	while (!s && i < n)
 	{
@@ -44,13 +45,11 @@ t_tetr	*ft_check_tab(char *s, int n)
 		if (j == 4)
 		{
 			tetr = ft_create_elem(tab);
-			free(tab);
 			j = 0;
 		}
 		if (j % 4 == 0 && j != 4)
 		{
 			ft_lst_pushback(&tetr, tab);
-			free(tab);
 			j = 0;
 		}
 	}
@@ -70,8 +69,8 @@ void	ft_create_tab(char *av)
 		ft_putstr("invalid file");
 	while (read(fd, &buf, 1))
 	{
-		if (buf != '.' || buf != '#' || buf != '\n')
-			ft_putstr ("null");
+		if (buf != '.' && buf != '#' && buf != '\n' && buf != '\0')
+			return;
 		i++;
 	}
 	ft_putnbr(i);
