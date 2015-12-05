@@ -13,15 +13,43 @@
 #include <libft.h>
 #include <main.h>
 
-int		main(int ac, char **av)
+void	error_display(int errid)
 {
-	if (ac != 2)
+	if (errid == 0)
+		ft_putendl_fd("#Err[00] : Wrong argument count (1 expected)", 2);
+	else if (errid == 1)
+		ft_putendl_fd("#Err[01] : File not found", 2);
+	else if (errid == 2)
+		ft_putendl_fd("#Err[02] : Submitted file is invalid", 2);
+	else
+		ft_putendl_fd("#Err[??] : Unknown error", 2);
+}
+
+int		file_checking(int fd)
+{
+	if (fd == -1)
 	{
-		ft_putstr("error\n");
+		error_display(1);
+		return (1);
 	}
-	else if (ac == 2)
+	if (check_tetr(fd))
 	{
-		ft_create_tab(av[1]);
+		error_display(2);
+		return (1);
 	}
+	close(fd);
 	return (0);
+}
+
+int		main(int argc, char **argv)
+{
+	int		fd;
+
+	if (argc != 2)
+	{
+		error_display(0);
+		return (1);
+	}
+	fd = open(argv[1], O_RDONLY);
+	return (file_checking(fd));
 }

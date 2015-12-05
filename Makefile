@@ -31,6 +31,8 @@ SDIR =		./srcs/
 SRCS =		read_tetr.c				\
 			ft_create_elem.c		\
 			ft_lst_pushback.c		\
+			check_tetr.c
+
 SRCC =		$(addprefix $(SDIR),$(SRCS))
 
 ODIR =		./objs/
