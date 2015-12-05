@@ -6,7 +6,7 @@
 #    By: rpallies <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/24 12:56:26 by rpallies          #+#    #+#              #
-#    Updated: 2015/12/04 14:56:36 by rpallies         ###   ########.fr        #
+#    Updated: 2015/12/05 16:38:16 by alallema         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ INCS =		libft.h					\
 SDIR =		./srcs/
 SRCS =		read_tetr.c				\
 			ft_create_elem.c		\
-			ft_list_pushback.c		\
+			ft_lst_pushback.c		\
 
 ODIR =		./objs/
 OBJS =		$(SRCS:.c=.o)
