@@ -1,15 +1,15 @@
 #ifndef MAIN_H
 # define MAIN_H
 
-typedef struct	s_tetr
+typedef struct		s_tetr
 {
-	int			id;
-	char		**pattern;
-	struct	s_tetr		*next;
-}				t_tetr;
+	int				id;
+	char			**pattern;
+	struct	s_tetr	*next;
+}					t_tetr;
 
-void			ft_lst_pushback(t_tetr **begin, char **data);
-t_tetr			*ft_create_elem(char **pattern);
-void			ft_create_tab(char *av);
+void				ft_lst_pushback(t_tetr **begin, char **data);
+t_tetr				*ft_create_elem(char **pattern);
+void				ft_create_tab(char *av);
 
 #endif

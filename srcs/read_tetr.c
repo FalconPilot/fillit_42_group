@@ -6,7 +6,7 @@
 /*   By: alallema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 17:46:52 by alallema          #+#    #+#             */
-/*   Updated: 2015/12/05 16:48:40 by alallema         ###   ########.fr       */
+/*   Updated: 2015/12/05 17:39:01 by alallema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,6 @@ void	ft_create_tab(char *av)
 			return;
 		i++;
 	}
-	ft_putnbr(i);
-	ft_putchar('\n');
 	close(fd);
 	fd = open(&av[0], O_RDONLY);
 	tab = (char *)malloc(sizeof(char) * i + 1);
