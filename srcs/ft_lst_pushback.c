@@ -6,7 +6,7 @@
 /*   By: alallema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/05 13:51:33 by alallema          #+#    #+#             */
-/*   Updated: 2015/12/05 16:35:25 by alallema         ###   ########.fr       */
+/*   Updated: 2015/12/05 19:35:08 by alallema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,9 @@ void	ft_lst_pushback(t_tetr **begin_list, char **data)
 
 	elem = *begin_list;
 	if (*begin_list == NULL)
-	{
 		*begin_list = ft_create_elem(data);
-	}
-	else
-	{
-		while (elem->next != NULL)
-				elem = elem->next;
-		elem->next = ft_create_elem(data);
-	}
+	while (elem->next != NULL)
+		elem = elem->next;
+	elem->next = ft_create_elem(data);
 }
 

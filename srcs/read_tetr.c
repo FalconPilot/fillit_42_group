@@ -6,7 +6,7 @@
 /*   By: alallema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 17:46:52 by alallema          #+#    #+#             */
-/*   Updated: 2015/12/05 17:39:01 by alallema         ###   ########.fr       */
+/*   Updated: 2015/12/05 19:37:24 by alallema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,25 @@
 #include <stdlib.h>
 #include <libft.h>
 #include <main.h>
+#include <stdio.h>
+
+void	ft_print_list(t_tetr *tetr)
+{
+	int	i;
+
+	i = 0;
+	while (tetr)
+	{
+		while (tetr->pattern[i])
+		{
+			ft_putstr(tetr->pattern[i]);
+			ft_putchar('\n');
+			i++;
+		}
+		tetr = tetr->next;
+		i = 0;
+	}
+}
 
 t_tetr	*ft_check_tab(char *s, int n)
 {
@@ -28,31 +47,34 @@ t_tetr	*ft_check_tab(char *s, int n)
 	i = 0;
 	j = 0;
 	k = 0;
-	ft_putstr(s);
 	tab = (char **)malloc(sizeof(char*) * 5);
-	while (!s && i < n)
+	while (s && i < n)
 	{
 		tab[j] = (char *)malloc(sizeof(char) * 5);
-		while (s[i] != '\n' && i % 4 == 0 && i < n)
+		while (s[i] != '\n' && i < n)
 		{
 			tab[j][k] = s[i];
 			i++;
 			k++;
 		}
-		tab[j][k] = '\n';
-		k = 0;
+		tab[j][k] = '\0';
+		i++;
 		j++;
-		if (j == 4)
+		if (i == 21)
 		{
+			tab[j] = NULL;
 			tetr = ft_create_elem(tab);
 			j = 0;
 		}
-		if (j % 4 == 0 && j != 4)
+		if (i % 21 == 0 && i != 21)
 		{
+			tab[j] = NULL;
 			ft_lst_pushback(&tetr, tab);
 			j = 0;
 		}
+		k = 0;
 	}
+	ft_print_list(tetr);
 	return (tetr);
 }
 
