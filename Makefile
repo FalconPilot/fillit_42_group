@@ -43,7 +43,7 @@ all: $(NAME)
 
 $(NAME): header $(OBJS)
 	@echo "  ${BLU}+Compilation:${STD} $@"
-	@gcc $(EXEC) $(OBCC) -L$(LDIR) $(LIBS) -o $(NAME)
+	@gcc $(FLAG) $(EXEC) $(OBCC) -L$(LDIR) $(LIBS) -o $(NAME)
 	@echo "  ${YEL}Compilation terminee !${STD}"
 
 %.o: $(SDIR)%.c
