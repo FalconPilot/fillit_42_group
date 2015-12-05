@@ -13,7 +13,7 @@
 #include "main.h"
 #include <stdlib.h>
 
-void	ft_lst_push_back(t_tetr **begin_list, char **data)
+void	ft_lst_pushback(t_tetr **begin_list, char **data)
 {
 	t_tetr	*elem;
 
