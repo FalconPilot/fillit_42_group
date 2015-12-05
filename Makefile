@@ -23,11 +23,13 @@ LDIR =		./libs/
 LIBS =		-lft
 
 IDIR =		./incs/
-INCS =		libft.h		\
+INCS =		libft.h					\
 			main.h
 
 SDIR =		./srcs/
-SRCS =		read_tetr.c
+SRCS =		read_tetr.c				\
+			ft_create_elem.c		\
+			ft_list_pushback.c		\
 
 ODIR =		./objs/
 OBJS =		$(SRCS:.c=.o)
