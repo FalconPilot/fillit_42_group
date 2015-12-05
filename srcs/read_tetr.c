@@ -6,7 +6,7 @@
 /*   By: alallema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 17:46:52 by alallema          #+#    #+#             */
-/*   Updated: 2015/12/05 16:41:14 by alallema         ###   ########.fr       */
+/*   Updated: 2015/12/05 16:48:40 by alallema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <stdlib.h>
-#include "libft.h"
+#include <libft.h>
 #include "main.h"
 
 t_tetr	*ft_check_tab(char *s, int n)
