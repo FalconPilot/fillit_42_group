@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_create_elem.c                                   :+:      :+:    :+:   */
+/*   ft_list_pushback.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alallema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/05 13:57:13 by alallema          #+#    #+#             */
-/*   Updated: 2015/12/05 14:57:25 by alallema         ###   ########.fr       */
+/*   Created: 2015/12/05 13:51:33 by alallema          #+#    #+#             */
+/*   Updated: 2015/12/05 15:06:48 by alallema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 #include <stdlib.h>
 
-t_tetr *ft_create_elem(char **pattern)
+void	ft_lst_pushback(t_tetr **begin_list, char **data)
 {
-	t_tetr *elem;
+	t_tetr	*elem;
 
-	elem = (t_tetr*)malloc(sizeof(t_tetr));
-	if (elem != NULL)
+	elem = *begin_list;
+	if (*begin_list == NULL)
 	{
-		elem->pattern = pattern;
-		elem->next = NULL;
+		*begin_list = ft_create_elem(data);
 	}
-	return (elem);
+	else
+	{
+		while (elem->next != NULL)
+				elem = elem->next;
+		elem->next = ft_create_elem(data);
+	}
 }
+
