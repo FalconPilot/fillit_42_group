@@ -6,7 +6,7 @@
 #    By: rpallies <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/24 12:56:26 by rpallies          #+#    #+#              #
-#    Updated: 2015/12/09 14:17:52 by rpallies         ###   ########.fr        #
+#    Updated: 2015/12/09 14:24:14 by rpallies         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +64,7 @@ header:
 
 norme: header
 	@echo "${GRE}  Verification de la norme${STD}\n"
-	@norminette $(SRCS) libft.h
+	@norminette $(NORM)
 	@echo "${RED}  \nTotal errors :${STD}" $(shell norminette $(NORM) | grep -v "Norme" | wc -l)
 
 clean: header

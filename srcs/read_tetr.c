@@ -6,7 +6,7 @@
 /*   By: alallema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 12:05:43 by alallema          #+#    #+#             */
-/*   Updated: 2015/12/09 13:37:06 by alallema         ###   ########.fr       */
+/*   Updated: 2015/12/09 15:10:33 by rpallies         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	ft_create_tab(char *av)
 	int		i;
 
 	i = 0;
-	fd = open(&av[0], O_RDONLY);
+	fd = open(av, O_RDONLY);
 	if (fd == -1)
 		ft_putstr("invalid file");
 	while (read(fd, &buf, 1))
@@ -97,7 +97,7 @@ void	ft_create_tab(char *av)
 		i++;
 	}
 	close(fd);
-	fd = open(&av[0], O_RDONLY);
+	fd = open(av, O_RDONLY);
 	tab = (char *)malloc(sizeof(char) * i + 1);
 	while (read(fd, tab, (i + 1)))
 		ft_check_tab(tab, i);
