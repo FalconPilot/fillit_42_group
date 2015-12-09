@@ -5,12 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alallema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/09 12:05:43 by alallema          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2015/12/09 16:48:54 by alallema         ###   ########.fr       */
-=======
-/*   Updated: 2015/12/09 15:10:33 by rpallies         ###   ########.fr       */
->>>>>>> ef00fd88702f2ba4a5db4a48c127286b06281287
+/*   Created: 2015/12/09 18:51:49 by alallema          #+#    #+#             */
+/*   Updated: 2015/12/09 19:41:25 by alallema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +16,6 @@
 #include <stdlib.h>
 #include <libft.h>
 #include <main.h>
-#include <stdio.h>
 
 void	ft_print_list(t_tetr *tetr)
 {
@@ -37,15 +32,7 @@ void	ft_print_list(t_tetr *tetr)
 		}
 		tetr = tetr->next;
 		i = 0;
-	}/*
-{
-	t_tetr *courant; 
-	courant = tetr; 
-	while (courant != NULL)
-	{ 
-		printf("%p - %s\n", courant, courant->pattern[0]); 
-		courant = courant->next; 
-	}*/
+	}
 }
 
 t_tetr	*ft_create_lst(char *s, int n)
@@ -64,22 +51,18 @@ t_tetr	*ft_create_lst(char *s, int n)
 	{
 		tab[j] = (char *)malloc(sizeof(char) * 5);
 		while (s[i] != '\n' && i < n)
-		{
-			tab[j][k] = s[i];
-			i++;
-			k++;
-		}
+			tab[j][k++] = s[i++];
 		tab[j][k] = '\0';
 		i++;
 		j++;
-		if (i == 21)
+		if (i == 20)
 		{
 			tab[j] = NULL;
 			tetr = ft_create_elem(tab);
 			tab = (char **)malloc(sizeof(char*) * 5);
 			j = 0;
 		}
-		if (i % 21 == 0 && i != 21)
+		if (i != 20 && j == 5 && k == 4)
 		{
 			tab[j] = NULL;
 			ft_lst_pushback(&tetr, tab);
@@ -88,7 +71,6 @@ t_tetr	*ft_create_lst(char *s, int n)
 		}
 		k = 0;
 	}
-	ft_print_list(tetr);
 	return (tetr);
 }
 
@@ -105,14 +87,12 @@ void	ft_create_tab(char *av)
 		ft_putstr("invalid file");
 	while (read(fd, &buf, 1))
 	{
-		if (buf != '.' && buf != '#' && buf != '\n' && buf != '\0')
-			return ;
 		i++;
 	}
 	close(fd);
 	fd = open(av, O_RDONLY);
 	tab = (char *)malloc(sizeof(char) * i + 1);
 	while (read(fd, tab, (i + 1)))
-		ft_create_lst(tab, i);
+		ft_print_list(ft_create_lst(tab, i));
 	close(fd);
 }

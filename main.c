@@ -6,7 +6,7 @@
 /*   By: alallema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/05 15:50:20 by alallema          #+#    #+#             */
-/*   Updated: 2015/12/05 19:20:50 by alallema         ###   ########.fr       */
+/*   Updated: 2015/12/09 16:58:41 by alallema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,17 @@ int		file_checking(int fd)
 int		main(int argc, char **argv)
 {
 	int		fd;
+	int		ret;
 
+	ret = 0;
 	if (argc != 2)
 	{
 		error_display(0);
 		return (1);
 	}
+	fd = open(argv[1], O_RDONLY);
+	ret = file_checking(fd);
 	if (argc == 2)
 		ft_create_tab(argv[1]);
-	fd = open(argv[1], O_RDONLY);
-	return (file_checking(fd));
+	return (ret);
 }
