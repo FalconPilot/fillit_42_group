@@ -6,7 +6,7 @@
 /*   By: alallema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 12:05:43 by alallema          #+#    #+#             */
-/*   Updated: 2015/12/09 13:37:06 by alallema         ###   ########.fr       */
+/*   Updated: 2015/12/09 16:48:54 by alallema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,18 @@ void	ft_print_list(t_tetr *tetr)
 		}
 		tetr = tetr->next;
 		i = 0;
-	}
-
+	}/*
+{
+	t_tetr *courant; 
+	courant = tetr; 
+	while (courant != NULL)
+	{ 
+		printf("%p - %s\n", courant, courant->pattern[0]); 
+		courant = courant->next; 
+	}*/
 }
 
-t_tetr	*ft_check_tab(char *s, int n)
+t_tetr	*ft_create_lst(char *s, int n)
 {
 	t_tetr	*tetr;
 	char	**tab;
@@ -65,12 +72,14 @@ t_tetr	*ft_check_tab(char *s, int n)
 		{
 			tab[j] = NULL;
 			tetr = ft_create_elem(tab);
+			tab = (char **)malloc(sizeof(char*) * 5);
 			j = 0;
 		}
 		if (i % 21 == 0 && i != 21)
 		{
 			tab[j] = NULL;
 			ft_lst_pushback(&tetr, tab);
+			tab = (char **)malloc(sizeof(char*) * 5);
 			j = 0;
 		}
 		k = 0;
@@ -87,7 +96,7 @@ void	ft_create_tab(char *av)
 	int		i;
 
 	i = 0;
-	fd = open(&av[0], O_RDONLY);
+	fd = open(av, O_RDONLY);
 	if (fd == -1)
 		ft_putstr("invalid file");
 	while (read(fd, &buf, 1))
@@ -97,9 +106,9 @@ void	ft_create_tab(char *av)
 		i++;
 	}
 	close(fd);
-	fd = open(&av[0], O_RDONLY);
+	fd = open(av, O_RDONLY);
 	tab = (char *)malloc(sizeof(char) * i + 1);
 	while (read(fd, tab, (i + 1)))
-		ft_check_tab(tab, i);
+		ft_create_lst(tab, i);
 	close(fd);
 }
