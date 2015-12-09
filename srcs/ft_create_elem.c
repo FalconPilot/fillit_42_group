@@ -6,16 +6,16 @@
 /*   By: alallema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/05 13:57:13 by alallema          #+#    #+#             */
-/*   Updated: 2015/12/05 19:11:45 by alallema         ###   ########.fr       */
+/*   Updated: 2015/12/09 13:15:24 by alallema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 #include <stdlib.h>
 
-t_tetr *ft_create_elem(char **pattern)
+t_tetr		*ft_create_elem(char **pattern)
 {
-	t_tetr *elem;
+	t_tetr	*elem;
 
 	elem = (t_tetr*)malloc(sizeof(t_tetr));
 	if (elem != NULL)

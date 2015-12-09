@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.h                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alallema <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/12/09 13:12:20 by alallema          #+#    #+#             */
+/*   Updated: 2015/12/09 13:13:06 by alallema         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef MAIN_H
 # define MAIN_H
 # include <unistd.h>
@@ -10,7 +22,7 @@ typedef struct			s_tetr
 {
 	int					id;
 	char				**pattern;
-	struct	s_tetr		*next;
+	struct s_tetr		*next;
 }						t_tetr;
 
 void					ft_lst_pushback(t_tetr **begin, char **data);

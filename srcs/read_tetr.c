@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read.c                                             :+:      :+:    :+:   */
+/*   read_tetr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alallema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/03 17:46:52 by alallema          #+#    #+#             */
-/*   Updated: 2015/12/05 19:37:24 by alallema         ###   ########.fr       */
+/*   Created: 2015/12/09 12:05:43 by alallema          #+#    #+#             */
+/*   Updated: 2015/12/09 13:37:06 by alallema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	ft_print_list(t_tetr *tetr)
 		tetr = tetr->next;
 		i = 0;
 	}
+
 }
 
 t_tetr	*ft_check_tab(char *s, int n)
@@ -42,7 +43,7 @@ t_tetr	*ft_check_tab(char *s, int n)
 	char	**tab;
 	int		i;
 	int		j;
-	int 	k;
+	int		k;
 
 	i = 0;
 	j = 0;
@@ -92,7 +93,7 @@ void	ft_create_tab(char *av)
 	while (read(fd, &buf, 1))
 	{
 		if (buf != '.' && buf != '#' && buf != '\n' && buf != '\0')
-			return;
+			return ;
 		i++;
 	}
 	close(fd);
