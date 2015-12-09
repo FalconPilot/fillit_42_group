@@ -6,7 +6,7 @@
 #    By: rpallies <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/24 12:56:26 by rpallies          #+#    #+#              #
-#    Updated: 2015/12/05 16:38:16 by alallema         ###   ########.fr        #
+#    Updated: 2015/12/09 14:24:14 by rpallies         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,15 +45,14 @@ FLAG =		-Wall -Wextra -Werror -I$(IDIR)
 
 all: $(NAME)
 
-$(NAME): header $(OBJS)
+$(NAME): header $(OBCC)
 	@echo "  ${BLU}+Compilation:${STD} $@"
 	@gcc $(FLAG) $(EXEC) $(OBCC) -L$(LDIR) $(LIBS) -o $(NAME)
 	@echo "  ${YEL}Compilation terminee !${STD}"
 
-%.o: $(SDIR)%.c
+$(ODIR)%.o: $(SDIR)%.c
 	@echo "  ${GRE}+Compilation :${STD} $^"
-	@gcc $^ $(FLAG) -c
-	@mv $@ $(ODIR)$@
+	@gcc $^ $(FLAG) -c -o $@
 
 header:
 	@clear
@@ -65,7 +64,7 @@ header:
 
 norme: header
 	@echo "${GRE}  Verification de la norme${STD}\n"
-	@norminette $(SRCS) libft.h
+	@norminette $(NORM)
 	@echo "${RED}  \nTotal errors :${STD}" $(shell norminette $(NORM) | grep -v "Norme" | wc -l)
 
 clean: header
