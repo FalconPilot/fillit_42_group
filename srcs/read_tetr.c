@@ -6,11 +6,8 @@
 /*   By: alallema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 12:05:43 by alallema          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2015/12/09 16:48:54 by alallema         ###   ########.fr       */
-=======
+/*   Updated: 2015/12/09 17:12:36 by rpallies         ###   ########.fr       */
 /*   Updated: 2015/12/09 15:10:33 by rpallies         ###   ########.fr       */
->>>>>>> ef00fd88702f2ba4a5db4a48c127286b06281287
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +34,7 @@ void	ft_print_list(t_tetr *tetr)
 		}
 		tetr = tetr->next;
 		i = 0;
-	}/*
-{
-	t_tetr *courant; 
-	courant = tetr; 
-	while (courant != NULL)
-	{ 
-		printf("%p - %s\n", courant, courant->pattern[0]); 
-		courant = courant->next; 
-	}*/
+	}
 }
 
 t_tetr	*ft_create_lst(char *s, int n)
@@ -104,11 +93,7 @@ void	ft_create_tab(char *av)
 	if (fd == -1)
 		ft_putstr("invalid file");
 	while (read(fd, &buf, 1))
-	{
-		if (buf != '.' && buf != '#' && buf != '\n' && buf != '\0')
-			return ;
 		i++;
-	}
 	close(fd);
 	fd = open(av, O_RDONLY);
 	tab = (char *)malloc(sizeof(char) * i + 1);

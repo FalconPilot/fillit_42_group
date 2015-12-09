@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_tetr.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alallema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/09 13:16:28 by alallema          #+#    #+#             */
-/*   Updated: 2015/12/09 17:15:11 by rpallies         ###   ########.fr       */
+/*   Created: 2015/12/05 15:50:20 by alallema          #+#    #+#             */
+/*   Updated: 2015/12/09 17:14:11 by rpallies         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 #include <main.h>
 
-int		valid_cell(int pos, char c)
+void	error_display(int errid)
 {
-	if ((!pos % 5) && c != '\n' && pos)
-		return (1);
-	else if (c != '.' && c != '#' && pos > 0)
-		return (1);
-	return (0);
-}
-
-int		check_tetr(int fd)
-{
-	int		pos;
-	char	buf;
-
-	pos = 0;
-	while (read(fd, &buf, BUFSIZE))
-	{
-		if (valid_cell(pos, buf))
-			return (1);
-		if (pos % 22)
-			pos++;
-	}
-	return (0);
+	if (errid == 0)
+		ft_putendl_fd("#Err[00] : Wrong argument count (1 expected)", 2);
+	else if (errid == 1)
+		ft_putendl_fd("#Err[01] : File not found", 2);
+	else if (errid == 2)
+		ft_putendl_fd("#Err[02] : Submitted file is invalid", 2);
+	else
+		ft_putendl_fd("#Err[??] : Unknown error", 2);
 }

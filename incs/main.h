@@ -6,7 +6,7 @@
 /*   By: alallema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 13:12:20 by alallema          #+#    #+#             */
-/*   Updated: 2015/12/09 16:08:23 by alallema         ###   ########.fr       */
+/*   Updated: 2015/12/09 17:14:45 by rpallies         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ t_tetr					*ft_create_elem(char **pattern);
 t_tetr					*ft_check_tab(char *s, int n);
 void					ft_create_tab(char *av);
 
+void    				error_display(int errid);
 int						check_tetr(int fd);
 
 #endif
