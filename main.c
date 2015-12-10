@@ -6,7 +6,11 @@
 /*   By: alallema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/05 15:50:20 by alallema          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2015/12/09 16:58:41 by alallema         ###   ########.fr       */
+=======
+/*   Updated: 2015/12/09 17:12:59 by rpallies         ###   ########.fr       */
+>>>>>>> ea2f2479a9c5a012c82ebe1d516961a350ff98b8
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +60,9 @@ int		main(int argc, char **argv)
 	ret = file_checking(fd);
 	if (argc == 2)
 		ft_create_tab(argv[1]);
+<<<<<<< HEAD
 	return (ret);
+=======
+	return (file_checking(fd));
+>>>>>>> ea2f2479a9c5a012c82ebe1d516961a350ff98b8
 }
