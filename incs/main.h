@@ -6,8 +6,7 @@
 /*   By: alallema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 13:12:20 by alallema          #+#    #+#             */
-/*   Updated: 2015/12/10 11:38:45 by alallema         ###   ########.fr       */
-/*   Updated: 2015/12/09 17:14:45 by rpallies         ###   ########.fr       */
+/*   Updated: 2015/12/10 12:57:59 by alallema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +21,17 @@
 typedef struct			s_tetr
 {
 	int					id;
+	char				letter;
 	char				**pattern;
 	struct s_tetr		*next;
 }						t_tetr;
 
 void					ft_lst_pushback(t_tetr **begin, char **data);
-t_tetr					*ft_create_elem(char **pattern);
+t_tetr					*ft_create_elem(char **pattern, char letter);
 t_tetr					*ft_check_tab(char *s, int n);
 void					ft_read_file(char *av);
 
-void    				error_display(int errid);
+void					error_display(int errid);
 int						check_tetr(int fd);
 
 #endif

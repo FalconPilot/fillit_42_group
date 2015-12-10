@@ -5,14 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alallema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-<<<<<<< HEAD
 /*   Created: 2015/12/09 18:51:49 by alallema          #+#    #+#             */
-/*   Updated: 2015/12/09 20:59:08 by alallema         ###   ########.fr       */
-=======
-/*   Created: 2015/12/09 12:05:43 by alallema          #+#    #+#             */
-/*   Updated: 2015/12/09 17:12:36 by rpallies         ###   ########.fr       */
-/*   Updated: 2015/12/09 15:10:33 by rpallies         ###   ########.fr       */
->>>>>>> ea2f2479a9c5a012c82ebe1d516961a350ff98b8
+/*   Updated: 2015/12/10 12:58:46 by alallema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,52 +30,54 @@ void	ft_print_list(t_tetr *tetr)
 			ft_putchar('\n');
 			i++;
 		}
+		ft_putchar(tetr->letter);
+		ft_putchar('\n');
 		tetr = tetr->next;
 		i = 0;
 	}
 }
 
-t_tetr		*ft_count_tab(char *s, int n, int i, int j)
+char	**ft_create_tab(char *tab)
 {
-	t_tetr	*tetr;
-	char	**tab;
-	int		k;
+	char*s;
+	int	i;
 
-	k = 0;
-	tab = (char **)malloc(sizeof(char*) * 5);
-	while (s && i < n)
-	{
-		tab[j] = (char *)malloc(sizeof(char) * 5);
-		while (s[i] != '\n' && i < n)
-			tab[j][k++] = s[i++];
-		tab[j][k] = '\0';
+	i = 0;
+	s = ft_strdup(tab);
+	while (s[i] && i < 20)
 		i++;
-		j++;
-		if (i == 20 || (i != 20 && j == 5 && k == 4))
-		{
-			tab[j] = NULL;
-			i == 20 ? tetr = ft_create_elem(tab) : ft_lst_pushback(&tetr, tab);
-			tab = (char **)malloc(sizeof(char*) * 5);
-			j = 0;
-		}
-		k = 0;
-	}
-	ft_print_list(tetr);
-	return (tetr);
+	s[i] = '\0';
+	return (ft_strsplit(s, '\n'));
 }
 
-void	ft_create_tab(char *av)
+void	ft_create_list(char *tab, int n)
+{
+	t_tetr	*tetr;
+	int		i;
+
+	i = 0;
+	while (*tab && i < n)
+	{
+		if (i == 0)
+			tetr = ft_create_elem(ft_create_tab(tab), 'A');
+		if (i % 21 == 0 && i != 20 && i != 0)
+		{
+			ft_lst_pushback(&tetr, ft_create_tab(tab));
+		}
+		tab++;
+		i++;
+	}
+	ft_print_list(tetr);
+}
+
+void	ft_read_file(char *av)
 {
 	int		fd;
 	char	buf;
 	char	*tab;
 	int		i;
-	int		j;
-	int		k;
 
 	i = 0;
-	j = 0;
-	k = 0;
 	fd = open(av, O_RDONLY);
 	if (fd == -1)
 		ft_putstr("invalid file");
@@ -91,6 +87,6 @@ void	ft_create_tab(char *av)
 	fd = open(av, O_RDONLY);
 	tab = (char *)malloc(sizeof(char) * i + 1);
 	while (read(fd, tab, (i + 1)))
-		ft_count_tab(tab, i, j, k);
+		ft_create_list(tab, i);
 	close(fd);
 }
